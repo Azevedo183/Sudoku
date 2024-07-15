@@ -86,8 +86,8 @@ nav{
 }
 
 .nav-logo{
-    font-size: var(--font-size-lg);
     color: var(--blue);
+    font-size: var(--font-size-lg);
 }
 
 .dark-mode-toggle{
@@ -96,18 +96,18 @@ nav{
     cursor: pointer;
 }
 
-.fa-sun{
+.bxs-sun{
     display: none;
 }
 
-.fa-moon{
+.bxs-moon{
     display: inline-block;
 }
 
-.dark .fa-sun{
+.dark .bxs-sun{
     display: inline-block;
 }
 
-.dark .fa-moon{
+.dark .bxs-moon{
     display: none;
 }
