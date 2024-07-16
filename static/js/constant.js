@@ -1,5 +1,5 @@
 const CONSTANT = {
-    UNASIGNED: 0,
+    UNASSIGNED: 0,
     GRID_SIZE: 9,
     BOX_SIZE: 3,
     NUMBERS: [1,2,3,4,5,6,7,8,9],
@@ -7,7 +7,7 @@ const CONSTANT = {
         'Easy',
         'Medium',
         'Hard',
-        'Very Hard',
+        'Very hard',
         'Insane',
         'Inhuman'
     ],
