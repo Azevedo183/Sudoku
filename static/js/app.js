@@ -45,6 +45,9 @@ const initGameGrid = () => {
 const startGame = () => {
     start_screen.classList.remove('active');
     game_screen.classList.add('active');
+
+    player_name.innerHTML = name_input.value.trim();
+    setPlayerName(name_input.value.trim());
 }
 
 //button events
