@@ -163,6 +163,9 @@ const checkErr = (value) => {
     }
 }
 
+const removeErr = () => cells.forEach(e => e.classList.remove('err'));
+
+
 const initCellEvent = () => {
     cells.forEach((e , index) => {
         e.addEventListener('click', () =>{
