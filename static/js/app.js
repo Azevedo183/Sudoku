@@ -10,6 +10,8 @@ const pause_screen = document.querySelector('#pause-screen');
 
 const name_input = document.querySelector('#input-name');
 
+const number_inputs = document.querySelectorAll('.number');
+
 const player_name = document.querySelector('#player-name');
 const game_level = document.querySelector('#game-level');
 const game_time = document.querySelector('#game-time');
@@ -166,6 +168,32 @@ const checkErr = (value) => {
 const removeErr = () => cells.forEach(e => e.classList.remove('err'));
 
 
+const initNumberInputEvent = () => {
+    number_inputs.forEach((e, index) => {
+        e.addEventListener('click', () => {
+            if (!cells[selected_cell].classList.contains('filled')) {
+                cells[selected_cell].innerHTML = index + 1;
+                cells[selected_cell].setAttribute('data-value', index + 1);
+                // add to answer
+                let row = Math.floor(selected_cell / CONSTANT.GRID_SIZE);
+                let col = selected_cell % CONSTANT.GRID_SIZE;
+                su_answer[row][col] = index + 1;
+                // save game
+                // -----
+                removeErr();
+                checkErr(index + 1);
+                cells[selected_cell].classList.add('zoom-in');
+                setTimeout(() => {
+                    cells[selected_cell].classList.remove('zoom-in');
+                }, 500);
+
+                // check game win
+                // ----
+            }
+        })
+    })
+}
+
 const initCellEvent = () => {
     cells.forEach((e , index) => {
         e.addEventListener('click', () =>{
@@ -281,6 +309,7 @@ const init = () => {
 
     initGameGrid(); 
     initCellEvent();
+    initNumberInputEvent();
 
     if(getPlayerName()){
         name_input.value = getPlayerName();
