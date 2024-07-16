@@ -67,6 +67,15 @@ const startGame = () => {
     }, 1000);
 }
 
+const returnStartScreen = () => {
+    clearInterval(timer);
+    pause = false;
+    seconds = 0;
+    start_screen.classList.add('active');
+    game_screen.classList.remove('active');
+    pause_screen.classList.remove('active');
+}
+
 //button events
 document.querySelector('#dark-mode-toggle').addEventListener('click', () =>  {
     document.body.classList.toggle('dark');
@@ -100,6 +109,9 @@ document.querySelector('#btn-pause').addEventListener('click', () => {
 document.querySelector('#btn-resume').addEventListener('click', () => {
     pause_screen.classList.remove('active');
     pause = false;
+});
+document.querySelector('#btn-new-game').addEventListener('click', () => {
+    returnStartScreen();
 });
 //-------------
 
