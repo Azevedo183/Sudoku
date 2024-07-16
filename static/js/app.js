@@ -21,6 +21,10 @@ let timer =  null;
 let pause = false;
 let seconds = 0;
 
+let su = undefined;
+let su_answer = undefined;
+
+
 
 
 
@@ -33,6 +37,23 @@ const showTime = (seconds) => new Date(seconds * 1000).toISOString().substr(11, 
 
 const initSudoku = () => {
     //generate soduko 
+
+    su = sudokuGen(level);
+    su_answer = [...su.question];
+
+    
+    //show on the div's
+    for (let i = 0; i < Math.pow(CONSTANT.GRID_SIZE, 2); i++) {
+        let row = Math.floor(i / CONSTANT.GRID_SIZE);
+        let col = i % CONSTANT.GRID_SIZE;
+        
+        cells[i].setAttribute('data-value', su.question[row][col]);
+
+        if (su.question[row][col] !== 0) {
+            cells[i].classList.add('filled');
+            cells[i].innerHTML = su.question[row][col];
+        }
+    }
 }
 
 
@@ -62,7 +83,9 @@ const startGame = () => {
     game_level.innerHTML = CONSTANT.LEVEL_NAME[level_index];
 
     seconds = 0;
+    showTime(seconds);
 
+    
     timer = setInterval(() => {
         if(!pause){
             seconds = seconds + 1;
@@ -96,6 +119,7 @@ document.querySelector('#btn-level').addEventListener('click',(e) => {
 
 document.querySelector('#btn-play').addEventListener('click',  () => {
     if(name_input.value.trim().length > 0){
+        initSudoku();
         startGame();
     }else{
         name_input.classList.add('input-err');
