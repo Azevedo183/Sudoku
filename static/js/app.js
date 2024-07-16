@@ -66,7 +66,45 @@ const initSudoku = () => {
     }
 }
 
+const hoverBg = (index) => {
+    let row = Math.floor(index / CONSTANT.GRID_SIZE);
+    let col = index % CONSTANT.GRID_SIZE;
 
+    let box_start_row =  row - row % 3;
+    let box_start_col = col - col % 3;
+
+
+    for (let i = 0; i < CONSTANT.BOX_SIZE; i++){
+        for (let j = 0; j < CONSTANT.BOX_SIZE; j++){
+            let cell = cells[9 * (box_start_row + i )+ (box_start_col + j)];
+            cell.classList.add('hover');
+        }
+    }
+
+    let step = 9;
+    while (index + step >= 0){
+        cells[index - step].classList.add('hover');
+        step += 9;
+    }
+
+    step = 9;
+    while (index + step < 81 ){
+        cells[index - step].classList.add('hover');
+        step += 9;
+    }
+
+    step = 1;
+    while (index + step >= 9*row ){
+        cells[index - step].classList.add('hover');
+        step += 1;
+    }
+
+    step = 1;
+    while (index + step < 9*row + 9){
+        cells[index - step].classList.add('hover');
+        step += 1;
+    }
+}
 //Make the 3 by 3 squares
 const initGameGrid = () => {
     let index = 0;
