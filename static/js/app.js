@@ -1,5 +1,3 @@
-
-
 const cells = document.querySelectorAll('.main-grid-cell');
 
 //screens
