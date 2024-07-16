@@ -116,11 +116,11 @@ const restBg = () => {
 
 const checkErr = (value) => {
     const addErr = (cell) => {
-        if(parseInt(cell.getAtribute('data-value')) !== value){
-            cells.classList.add('err');
-            cells.classList.add('cell-err');
+        if (parseInt(cell.getAttribute('data-value')) === value) {
+            cell.classList.add('err');
+            cell.classList.add('cell-err');
             setTimeout(() => {
-                cells.classList.remove('cell-err');
+                cell.classList.remove('cell-err');
             }, 500);
         }
     }
@@ -136,7 +136,7 @@ const checkErr = (value) => {
     for (let i = 0; i < CONSTANT.BOX_SIZE; i++) {
         for (let j = 0; j < CONSTANT.BOX_SIZE; j++) {
             let cell = cells[9 * (box_start_row + i) + (box_start_col + j)];
-            if(!cell.classList.contains('selected')) addErr(cell);
+            if (!cell.classList.contains('selected')) addErr(cell);
         }
     }
 
@@ -159,7 +159,7 @@ const checkErr = (value) => {
     }
 
     step = 1;
-     while (index + step < 9*row + 9) {
+    while (index + step < 9*row + 9) {
         addErr(cells[index + step]);
         step += 1;
     }
