@@ -31,6 +31,10 @@ const setPlayerName = (name) => localStorage.setItem('player_name', name);
 const getPlayerName = () => localStorage.getItem('player_name');
 const showTime = (seconds) => new Date(seconds * 1000).toISOString().substr(11, 8)
 
+const initSudoku = () => {
+    //generate soduko 
+}
+
 
 //Make the 3 by 3 squares
 const initGameGrid = () => {
