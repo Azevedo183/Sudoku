@@ -324,8 +324,9 @@ nav{
     display: flex;
 }
 
-.pause-screen > * + *{
-    margin-top: 20px;
+.pause-screen > * + *,
+.result-screen > * + * {
+        margin-top: 20px;
 }
 
 .pause-screen.active .btn{
@@ -334,6 +335,25 @@ nav{
 
 .cell-err {
     animation: zoom-out-shake 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.result-screen.active div {
+    animation: zoom-in 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.result-screen .congrate {
+    font-size: var(--font-size-xl);
+    color: var(--blue);
+}
+
+.result-screen .info {
+    color: var(--color-txt);
+    font-size: var(--font-size);
+}
+
+#result-time {
+    color: var(--blue);
+    font-size: var(--font-size-xl);
 }
 
 @keyframes zoom-out-shake {
@@ -372,5 +392,40 @@ nav{
     }
     100%{
         transform: scale(1);
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    :root {
+        --nav-size: 50px;
+
+        --sudoku-cell-size: 30px;
+
+        --border-radius: 5px;
+
+        --space-y: 10px;
+
+        --gap: 2px;
+
+        --font-size: 1rem;
+        --font-size-lg: 1.5rem;
+        --font-size-xl: 2rem;
+    }
+
+    .input-name,
+    .btn {
+        height: 50px;
+    }
+
+    .main-grid-cell.hover {
+        border-width: 2px;
+    }
+
+    .screen {
+        min-width: unset;
+    }
+
+    .main {
+        height: 100vh;
     }
 }
