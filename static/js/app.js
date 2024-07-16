@@ -5,6 +5,7 @@ const cells = document.querySelectorAll('.main-grid-cell');
 //screens
 const start_screen = document.querySelector('#start-screen');
 const game_screen = document.querySelector('#game-screen');
+const pause_screen = document.querySelector('#pause-screen');
 //------
 
 const name_input = document.querySelector('#input-name');
@@ -78,7 +79,7 @@ document.querySelector('#btn-level').addEventListener('click',(e) => {
     level_index = level_index + 1 > CONSTANT.LEVEL.length - 1 ? 0 : level_index + 1;
     level = CONSTANT.LEVEL[level_index];
     e.target.innerHTML = CONSTANT.LEVEL_NAME[level_index];
-})
+});
 
 document.querySelector('#btn-play').addEventListener('click',  () => {
     if(name_input.value.trim().length > 0){
@@ -90,8 +91,16 @@ document.querySelector('#btn-play').addEventListener('click',  () => {
            name_input.focus(); 
         }, 500);
     }
-})
+});
 
+document.querySelector('#btn-pause').addEventListener('click', () => {
+    pause_screen.classList.add('active');
+    pause = true;
+});
+document.querySelector('#btn-resume').addEventListener('click', () => {
+    pause_screen.classList.remove('active');
+    pause = false;
+});
 //-------------
 
 const init = () => {
@@ -105,6 +114,12 @@ const init = () => {
     document.querySelector('#btn-continue').style.display = game ? 'grid' : 'none';
 
     initGameGrid(); 
+
+    if(getPlayerName()){
+        name_input.value = getPlayerName();
+    }else{
+        name_input.focus();
+    }
 }
 
 init()
