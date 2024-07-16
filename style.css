@@ -428,4 +428,11 @@ nav{
     .main {
         height: 100vh;
     }
+
+    .numbers{
+        margin-top: var(--space-y);
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 5px;
+    }
 }
