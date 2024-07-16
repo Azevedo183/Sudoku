@@ -16,6 +16,10 @@ const game_time = document.querySelector('#game-time');
 
 let level_index = 0;
 let level = CONSTANT.LEVEL[level_index];
+let timer =  null;
+let pause = false;
+let seconds = 0;
+
 
 
 
@@ -24,6 +28,7 @@ const getGameInfo = () => JSON.parse(localStorage.getItem('game'));
 
 const setPlayerName = (name) => localStorage.setItem('player_name', name);
 const getPlayerName = () => localStorage.getItem('player_name');
+const showTime = (seconds) => new Date(seconds * 1000).toISOString().substr(11, 8)
 
 
 //Make the 3 by 3 squares
@@ -48,6 +53,17 @@ const startGame = () => {
 
     player_name.innerHTML = name_input.value.trim();
     setPlayerName(name_input.value.trim());
+
+    game_level.innerHTML = CONSTANT.LEVEL_NAME[level_index];
+
+    seconds = 0;
+
+    timer = setInterval(() => {
+        if(!pause){
+            seconds = seconds + 1;
+            game_time.innerHTML = showTime(seconds);
+        }
+    }, 1000);
 }
 
 //button events
