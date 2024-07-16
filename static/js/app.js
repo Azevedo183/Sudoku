@@ -42,6 +42,11 @@ const initGameGrid = () => {
 }
 //-----------------------
 
+const startGame = () => {
+    start_screen.classList.remove('active');
+    game_screen.classList.add('active');
+}
+
 //button events
 document.querySelector('#dark-mode-toggle').addEventListener('click', () =>  {
     document.body.classList.toggle('dark');
@@ -58,7 +63,7 @@ document.querySelector('#btn-level').addEventListener('click',(e) => {
 
 document.querySelector('#btn-play').addEventListener('click',  () => {
     if(name_input.value.trim().length > 0){
-        alert(`Level => ${level}`)
+        startGame();
     }else{
         name_input.classList.add('input-err');
         setTimeout(() => {
@@ -69,7 +74,6 @@ document.querySelector('#btn-play').addEventListener('click',  () => {
 })
 
 //-------------
-
 
 const init = () => {
     const darkmode = JSON.parse(localStorage.getItem('darkmode'));
